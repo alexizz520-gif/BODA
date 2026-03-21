@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boda Yadira & Daniel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: url('https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1500&q=80') center/cover fixed no-repeat;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(12px);
+    background: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25));
+    z-index: -1;
+}
+
+.section {
+    padding: 40px 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 25px 20px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    border: 1.5px solid rgba(212,175,55,0.6);
+    outline: 1px solid rgba(255,255,255,0.4);
+    animation: fadeUp 1s ease;
+}
+
+.gold-text {
+    background: linear-gradient(90deg, #d4af37, #fff3b0, #d4af37);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: goldMove 3s linear infinite;
+}
+
+@keyframes goldMove {
+    0% {background-position: 0% center;}
+    100% {background-position: 200% center;}
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8em;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 500;
+}
+
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(30px);} 
+    to {opacity:1; transform:translateY(0);} 
+}
+
+/* 🕒 Cuenta regresiva difuminada con números dorados */
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.countdown div {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(212,175,55,0.5);
+    border-radius: 15px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.countdown div:hover {
+    transform: translateY(-4px);
+}
+
+/* Números dorados animados */
+.countdown strong {
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, #d4af37, #fff3b0, #d4af37);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: goldMove 3s linear infinite;
+}
+
+button {
+    background: linear-gradient(45deg,#d4af37,#f5e6b3);
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    color: #333;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.timeline {
+    margin-top: 20px;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 0;
+    height: 0;
+    width: 2px;
+    background: #d4af37;
+    animation: lineGrow 2s ease forwards;
+}
+
+@keyframes lineGrow {
+    to {height: 100%;}
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.event:nth-child(1){animation-delay:0.3s}
+.event:nth-child(2){animation-delay:0.6s}
+.event:nth-child(3){animation-delay:0.9s}
+.event:nth-child(4){animation-delay:1.2s}
+.event:nth-child(5){animation-delay:1.5s}
+
+.time {
+    width: 70px;
+    font-size: 0.85em;
+    color: #bfa046;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(45deg,#d4af37,#fff3b0,#d4af37);
+    background-size: 200% auto;
+    border-radius: 50%;
+    animation: goldMove 3s linear infinite;
+}
+
+.content {
+    margin-left: 15px;
+    text-align: left;
+    flex: 1;
+    border-bottom: 1px dashed rgba(212,175,55,0.5);
+    padding-bottom: 5px;
+}
+
+.title {
+    font-size: 1em;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-btn {
+    margin-top: 20px;
+    background: #d4af37;
+    color: white;
+}
+
+.particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: rgba(212,175,55,0.5);
+    border-radius: 50%;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);} 
+    to {transform: translateY(-10vh);} 
+}
+
+.divider {
+    height: 2px;
+    width: 100%;
+    margin: 10px 0 15px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🏠 Encabezado -->
+<div class="section">
+    <div class="card">
+        <h1 class="gold-text">Yadira & Daniel</h1>
+        <div class="divider"></div>
+        <div class="subtitle">11 de Mayo 2026</div>
+        <p style="margin-top:10px; font-size:1em; color:#333; font-weight:500;">
+            Con gran alegría, te invitamos a celebrar con nosotros el inicio de nuestra nueva vida juntos.
+        </p>
+        <p style="margin-top:8px; font-size:0.95em; font-style:italic; color:#555; font-weight:500;">
+            "Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto." – Colosenses 3:14
+        </p>
+
+        <!-- 🕒 Countdown -->
+        <div class="countdown" id="countdown">
+            <div><strong id="d"></strong>DÍAS</div>
+            <div><strong id="h"></strong>HORAS</div>
+            <div><strong id="m"></strong>MIN</div>
+            <div><strong id="s"></strong>SEG</div>
+        </div>
+
+        <button onclick="window.open('https://wa.me/526252060896?text=Confirmo%20mi%20asistencia')">
+            Confirmar por WhatsApp
+        </button>
+    </div>
+</div>
+
+<!-- 📅 Itinerario -->
+<div class="section">
+    <div class="card">
+        <h2 class="gold-text">Itinerario</h2>
+        <div class="timeline">
+            <div class="event">
+                <div class="time">5:00 PM</div>
+                <div class="dot"></div>
+                <div class="content"><div class="title">⛪ Ceremonia</div></div>
+            </div>
+            <div class="event">
+                <div class="time">6:00 PM</div>
+                <div class="dot"></div>
+                <div class="content"><div class="title">🍽️ Recepción</div></div>
+            </div>
+            <div class="event">
+                <div class="time">7:00 PM</div>
+                <div class="dot"></div>
+                <div class="content"><div class="title">🥂 Brindis</div></div>
+            </div>
+            <div class="event">
+                <div class="time">8:00 PM</div>
+                <div class="dot"></div>
+                <div class="content"><div class="title">💃 Baile</div></div>
+            </div>
+            <div class="event">
+                <div class="time">12:00 AM</div>
+                <div class="dot"></div>
+                <div class="content"><div class="title">🌙 Fin de Fiesta</div></div>
+            </div>
+        </div>
+        <button class="footer-btn" onclick="window.open('https://wa.me/526252060896?text=Confirmo%20mi%20asistencia')">
+            Confirmar por WhatsApp
+        </button>
+    </div>
+</div>
+
+<!-- 📍 Ubicación y Dress Code -->
+<div class="section">
+    <div class="card">
+        <h2 class="gold-text">Ubicación</h2>
+        <p>Salón Luxor, Periférico de la Juventud</p>
+        <button onclick="window.open('https://www.google.com/maps/search/Salon+Luxor+Periferico+de+la+Juventud')">
+            Ver ubicación
+        </button>
+
+        <hr style="margin:20px 0; border:none; border-top:1px dashed rgba(212,175,55,0.5);">
+
+        <h2 class="gold-text">Dress Code</h2>
+        <p>Formal Elegante</p>
+        <p style="font-size:0.9em; color:#777;">Evitar color blanco</p>
+    </div>
+</div>
+
+<!-- 🔹 Script: Countdown + partículas -->
+<script>
+const eventDate = new Date('May 11, 2026 17:00:00').getTime();
+
+let x = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if(distance < 0){
+        clearInterval(x);
+        document.getElementById('countdown').innerHTML = "¡Hoy es el día! 🎉";
+        return;
+    }
+
+    document.getElementById('d').innerHTML = Math.floor(distance / (1000*60*60*24));
+    document.getElementById('h').innerHTML = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    document.getElementById('m').innerHTML = Math.floor((distance % (1000*60*60)) / (1000*60));
+    document.getElementById('s').innerHTML = Math.floor((distance % (1000*60)) / 1000);
+}, 1000);
+
+// Partículas flotantes
+for (let i = 0; i < 25; i++) {
+    let p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + 'vw';
+    let size = 3 + Math.random() * 5;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.opacity = 0.3 + Math.random() * 0.5;
+    p.style.animationDuration = (5 + Math.random() * 10) + 's';
+    document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
